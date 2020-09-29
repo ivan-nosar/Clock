@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        app:showAsAction="ifRoom"
+        android:id="@+id/notifications"
+        android:title="@string/notifications_title"
+        android:icon="@drawable/notification"
+        android:visible="true"
+        android:enabled="true" />
+    <item
+        app:showAsAction="ifRoom"
+        android:id="@+id/clock"
+        android:title="@string/clock_title"
+        android:icon="@drawable/clock"
+        android:visible="true"
+        android:enabled="true" />
+    <item
+        app:showAsAction="ifRoom"
+        android:id="@+id/calendar"
+        android:title="@string/calendar_title"
+        android:icon="@drawable/calendar"
+        android:visible="true"
+        android:enabled="true" />
+    <item
+        app:showAsAction="ifRoom"
+        android:id="@+id/timer"
+        android:title="@string/timer_title"
+        android:icon="@drawable/timer"
+        android:visible="true"
+        android:enabled="true" />
+    <item
+        app:showAsAction="ifRoom"
+        android:id="@+id/stopwatch"
+        android:title="@string/stopwatch_title"
+        android:icon="@drawable/stopwatch"
+        android:visible="true"
+        android:enabled="true" />
+</menu>
