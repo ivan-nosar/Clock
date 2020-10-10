@@ -2,13 +2,16 @@ package com.github.ivan.nosar.clock.view.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import com.github.ivan.nosar.clock.R
 import com.github.ivan.nosar.clock.databinding.ActivityMainBinding
 import com.github.ivan.nosar.clock.view.fragment.*
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
+
+    companion object {
+        const val SELECTED_TAB_ID_KEY: String = "MainActivity.SELECTED_TAB_ID_KEY"
+    }
 
     private lateinit var binding: ActivityMainBinding
 
@@ -18,8 +21,12 @@ class MainActivity : AppCompatActivity() {
 
         binding.bottomNavigation.setOnNavigationItemSelectedListener(bottomNavigationListener)
 
-        if (savedInstanceState == null) {
+        if (savedInstanceState == null || savedInstanceState.containsKey(SELECTED_TAB_ID_KEY)) {
             binding.bottomNavigation.selectedItemId = R.id.notifications
+        } else {
+            // ToDo: Check either it's correct implementation
+            // ToDo: Implement saving the state
+            binding.bottomNavigation.selectedItemId = savedInstanceState.getInt(SELECTED_TAB_ID_KEY)
         }
 
         val view = binding.root

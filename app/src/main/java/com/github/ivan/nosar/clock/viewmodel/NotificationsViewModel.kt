@@ -1,30 +1,20 @@
 package com.github.ivan.nosar.clock.viewmodel
 
+import android.app.Application
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
+import androidx.lifecycle.liveData
+import androidx.lifecycle.viewModelScope
 import com.github.ivan.nosar.clock.model.Notification
+import com.github.ivan.nosar.clock.model.database.ClockDatabase
 
-class NotificationsViewModel : ViewModel() {
-    private val _notifications: MutableLiveData<MutableList<Notification>> =
-        MutableLiveData<MutableList<Notification>>()
-    val notifications: LiveData<MutableList<Notification>>
-        get() = _notifications
+class NotificationsViewModel(application: Application) : AndroidViewModel(application) {
+    val notifications: LiveData<List<Notification>> = liveData {
+        val dao = ClockDatabase
+            .getInstance(application, viewModelScope)
+            .notificationDao()
 
-    private val _text = MutableLiveData<String>("")
-    val text: LiveData<String> = _text
-
-    init {
-        loadData()
-    }
-
-    private fun loadData() {
-        _text.value = "Hello world";
-        _notifications.value = mutableListOf(
-            Notification("First notification"),
-            Notification("Second notification"),
-            Notification("Third notification"),
-            Notification("Fourth notification")
-        )
+        val a = dao.getAll()
+        emit(a)
     }
 }

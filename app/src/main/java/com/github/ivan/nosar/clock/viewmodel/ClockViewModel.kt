@@ -1,7 +1,8 @@
 package com.github.ivan.nosar.clock.viewmodel
 
-import androidx.lifecycle.ViewModel
+import android.app.Application
+import androidx.lifecycle.AndroidViewModel
 
-class ClockViewModel : ViewModel() {
+class ClockViewModel(application: Application) : AndroidViewModel(application) {
     // TODO: Implement the ViewModel
 }
